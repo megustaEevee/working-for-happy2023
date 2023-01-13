@@ -1,0 +1,71 @@
+<div class="main">
+
+  <div class="left_bar">
+    <h1>精鋭部隊</h1>
+
+    <div class="log_in">
+      <%= link_to current_user.username, user_path(id: current_user.id), class: "username" %>
+    </div>
+
+    <% if current_user == @work.user && @work.wage == nil %>
+      <div class="dakoku">
+        <%= form_with model: [@work,@wage], local: true do |j| %>
+          <%= render "/devise/shared/error_messages", model: j.object %>
+          <%= j.hidden_field :end_time, value: @end_time %>
+          <% if @end_time > 6 %>
+            <%= j.hidden_field :paying, value: @paying - 1012 %>
+          <% else %>
+            <%= j.hidden_field :paying, value: @paying %>
+          <% end %>
+          <%= j.submit "退社する", class: "out" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if current_user == @work.user %>
+      <div class="comment-box">
+        <%= form_with model: [@work,@comment], local: true do |c| %>
+          <%= render "/devise/shared/error_messages", model: c.object %>
+          <%= c.text_area :text, placeholder: "残業理由を入力してください", class: "comment-text", id: "comment_text1" %>
+          <%= c.submit '残業申請', id: "comment-btn1", class: "comment-btn" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if current_user.id == 1 %>
+      <div class="comment-box">
+        <%= form_with model: [@work,@comment], local: true do |c| %>
+          <%= render "/devise/shared/error_messages", model: c.object %>
+          <%= c.text_area :text, placeholder: "コメントを入力してください", class: "comment-text", id: "comment_text2" %>
+          <%= c.submit '残業要請', id: "comment-btn2", class: "comment-btn" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="right_bar">
+    <H2><%="#{@work.user.username}さん、今日も1日がんばりましょう" %></h2>
+    <div id="day" class="day">
+      <%= "#{@time.year}年#{@time.month}月#{@time.day}日" %>
+      <div id="time" class="time">
+      </div>
+    </div>
+    <div id="Message" class="Message">
+    </div>
+
+    <% if @comments %>
+      <% @comments.each do |c| %>
+        <div id='comments' class="comments">
+          <p>
+            <% if c.user.id == 1 %>
+              <%= "#{c.work.user.username}さんへ"%><br>
+            <% end %>
+            <%= "#{c.user.username}:" %>
+              <%= c.text %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

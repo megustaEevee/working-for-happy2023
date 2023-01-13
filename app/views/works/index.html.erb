@@ -1,0 +1,48 @@
+<div class="main">
+
+  <div class="left_bar">
+    <h1>精鋭部隊</h1>
+
+    <div class="log_in">
+      <% if user_signed_in? %>
+        <%= link_to current_user.username, user_path(id: current_user.id), class: "username" %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path, class: "signup" %>
+        <%= link_to "ログイン", new_user_session_path, class: "login" %>
+      <% end %>
+    </div>
+
+    <div class="dakoku">
+      <%= form_with model: @work, local: true do |j| %>
+        <%= render "/devise/shared/error_messages", model: j.object %>
+        <%= j.hidden_field :start_time, value: @time.hour %>
+        <% if user_signed_in? %>
+          <% if @work_last == nil %>
+            <%= j.submit "出勤する", class: "in" %>
+          <% elsif @work_last.wage != nil && @work_last.id == @work_last.wage.work_id %>
+            <%= j.submit "出勤する", class: "in" %>
+          <% else%>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div calss="member">
+      <% @users.each do |n| %>
+        <%= link_to n.username, user_path(id: n.id), class: "member" %> 
+      <% end %>
+    </div>
+  </div>
+
+  <div class="right_bar">
+    <div id="day" class="day">
+      <%= "#{@time.year}年#{@time.month}月#{@time.day}日" %>
+      <div id="time" class="time">
+      </div>
+    </div>
+    <div id="Message" class="Message">
+    </div>
+  </div>
+
+</div>

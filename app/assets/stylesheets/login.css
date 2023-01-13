@@ -1,0 +1,31 @@
+.field{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.actions{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.box{
+  display: flex;
+  justify-content: center;
+}
+.return{
+  flex-direction: column;
+}
+
+.login-flash-message{
+  display: flex;
+  justify-content: center;
+}
+
+.error-alert{
+  display: flex;
+  justify-content: center;
+}

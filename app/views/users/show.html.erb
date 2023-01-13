@@ -1,0 +1,53 @@
+<div class="main">
+
+  <div class="left_bar">
+    <h1>精鋭部隊</h1>
+
+    <div class="log_in">
+        <%= link_to current_user.username, user_path(id: current_user.id), class: "username" %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %>
+    </div>
+      <%= link_to 'topへ戻る', root_path %>
+      <%if @wage == nil && @work != nil %>
+        <%= link_to '仕事中', work_path(@work.id) %>
+      <%end%>
+  </div>
+
+  <div class="right_bar">
+    <H2><%= "#{@user.username}さんのページ" %></h2>
+    <div id="day" class="day">
+      <%= "#{@time.year}年#{@time.month}月#{@time.day}日" %>
+      <div id="time" class="time">
+      </div>
+    </div>
+    <% if @user.wages %>
+      <% @month = 0 %>
+      <% @wages.each do |w| %>
+        <div class="wage">
+          <%= "#{w.created_at.strftime('%Y/%m/%d')}" %>
+          <%= "#{w.end_time}時間" %>
+          <%= "#{w.paying}円" %>
+        </div>
+        <% @month += w.paying %>
+      <% end %>
+      <div class="sum">
+        <%= "月合計 #{@month}円"%>
+      </div>
+    <% end %>
+
+    <% if @comments %>
+      <% @comments.each do |c| %>
+        <div id='comments' class="comments">
+          <p>
+            <%= "#{c.created_at.strftime('%Y/%m/%d')}" %><br>
+            <% if @user.id == 1 %>
+              <%= "#{c.work.user.username}さんへ"%><br>
+            <% end %>
+            <%= "#{c.user.username}:"%>
+            <%= c.text %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
