@@ -5,5 +5,9 @@
   "repository": "https://github.com/megustaEevee/working-for-happy2023.git",
   "author": "megustaEevee <71437195+megustaEevee@users.noreply.github.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
 }
