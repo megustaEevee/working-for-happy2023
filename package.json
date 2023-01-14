@@ -1,0 +1,9 @@
+{
+  "name": "working-for-happy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/megustaEevee/working-for-happy2023.git",
+  "author": "megustaEevee <71437195+megustaEevee@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true
+}
