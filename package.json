@@ -1,6 +1,10 @@
 {
   "name": "working_for_happy",
+  "version": "0.1.0",
   "private": true,
+  "scripts":{
+    "start": "node"
+  },
   "dependencies": {
     "@rails/actioncable": "7.0.4",
     "@rails/activestorage": "7.0.4",
@@ -8,7 +12,6 @@
     "@rails/webpacker": "5.4.3",
     "turbolinks": "5.2.0"
   },
-  "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^4"
   }
