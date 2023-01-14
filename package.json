@@ -2,9 +2,6 @@
   "name": "working_for_happy",
   "version": "0.1.0",
   "private": true,
-  "scripts":{
-    "start": "node app/javascript/channels/index.js"
-  },
   "dependencies": {
     "@rails/actioncable": "7.0.4",
     "@rails/activestorage": "7.0.4",
