@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_13_151541) do
-  create_table "comments", charset: "utf8mb3", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
     t.text "text", null: false
     t.bigint "user_id"
     t.bigint "work_id"
@@ -21,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_151541) do
     t.index ["work_id"], name: "index_comments_on_work_id"
   end
 
-  create_table "users", charset: "utf8mb3", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -35,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_151541) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  create_table "wages", charset: "utf8mb3", force: :cascade do |t|
+  create_table "wages", force: :cascade do |t|
     t.integer "end_time", null: false
     t.integer "paying", null: false
     t.bigint "user_id"
@@ -46,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_151541) do
     t.index ["work_id"], name: "index_wages_on_work_id"
   end
 
-  create_table "works", charset: "utf8mb3", force: :cascade do |t|
+  create_table "works", force: :cascade do |t|
     t.integer "start_time", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
