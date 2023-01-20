@@ -10,6 +10,7 @@ module WorkingForHappy
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.active_record.legacy_connection_handling = false
+    config.assets.initialize_on_precompile = false
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -20,5 +21,3 @@ module WorkingForHappy
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-
-config.assets.initialize_on_precompile = false
