@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/megustaEevee/working-for-happy2023/issues"
   },
-  "homepage": "https://github.com/megustaEevee/working-for-happy2023#readme"
+  "homepage": "https://github.com/megustaEevee/working-for-happy2023#readme",
+  "devDependencies": {
+    "webpack-cli": "^5.0.1"
+  }
 }
